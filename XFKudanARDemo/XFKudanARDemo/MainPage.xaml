@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFKudanARDemo.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:XFKudanARDemo">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Frame Padding="24" BackgroundColor="#2196F3">
+            <Label
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                Text="KudanAR demo"
+                TextColor="White" />
+        </Frame>
+
+        <Label
+            Padding="20,10"
+            FontSize="Title"
+            Text="There are no extra features. Just make it work." />
+
+        <Label
+            Padding="20,10"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="https://github.com/hsytkm/XFKudanARDemo" />
+
+        <Button
+            Margin="20"
+            Command="{Binding StartArCommand, Mode=OneTime}"
+            HeightRequest="100"
+            Text="Start Kudan AR" />
+
+    </StackLayout>
+
+</ContentPage>
