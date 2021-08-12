@@ -15,13 +15,12 @@ namespace XFKudanARDemo.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Instance = this;    // MarkerARActivity の起動用
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
-
-            Instance = this;    // MarkerARActivity の起動用
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

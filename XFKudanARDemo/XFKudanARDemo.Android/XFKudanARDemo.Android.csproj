@@ -103,10 +103,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Kudan_Cow.png" />
+    <AndroidAsset Include="Assets\KudanNode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Kudan_Lego_Marker.jpg" />
+    <AndroidAsset Include="Assets\KudanMarker.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

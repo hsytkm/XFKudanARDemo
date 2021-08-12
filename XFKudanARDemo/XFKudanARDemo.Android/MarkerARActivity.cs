@@ -12,8 +12,8 @@ namespace XFKudanARDemo.Droid
         // from https://www.xlsoft.com/doc/kudan/ja/development-license-keys_jp/
         private const string _licenseKey = @"License Key";
 
-        private const string _markerAssetsName = "Kudan_Lego_Marker.jpg";
-        private const string _nodeAssetsName = "Kudan_Cow.png";
+        public static string MarkerAssetsName { get; } = "KudanMarker.jpg";
+        private const string _nodeAssetsName = "KudanNode.png";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -27,7 +27,7 @@ namespace XFKudanARDemo.Droid
             base.Setup();
 
             // Create our trackable with an image
-            var trackable = CreateTrackable("LegoMarker", _markerAssetsName);
+            var trackable = CreateTrackable("MyMarker", MarkerAssetsName);
 
             // Get the trackable Manager singleton
             var trackableManager = ARImageTracker.Instance;

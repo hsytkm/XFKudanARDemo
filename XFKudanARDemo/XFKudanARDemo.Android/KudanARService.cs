@@ -17,6 +17,14 @@ namespace XFKudanARDemo.Droid
             new Permissions.StorageRead(),
         };
 
+        public ImageSource GetMarkerImageSource()
+        {
+            var assets = MainActivity.Instance.Assets;
+
+            // Stream の Dispose してない。 (Stream)ImageSource がやってくれる雰囲気がある。
+            return ImageSource.FromStream(() => assets.Open(MarkerARActivity.MarkerAssetsName));
+        }
+
         public async Task StartMarkerARActivityAsync()
         {
             var isGranted = await Smapho.CheckAndRequestPermissionsAsync(_kudanARPermissions);
