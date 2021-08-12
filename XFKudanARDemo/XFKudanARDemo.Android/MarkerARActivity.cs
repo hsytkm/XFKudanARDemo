@@ -11,9 +11,11 @@ namespace XFKudanARDemo.Droid
     {
         // from https://www.xlsoft.com/doc/kudan/ja/development-license-keys_jp/
         private const string _licenseKey = @"License Key";
-
-        public static string MarkerAssetsName { get; } = "KudanMarker.jpg";
+        
+        public static string MarkerAssetsName => "KudanMarker.jpg";
         private const string _nodeAssetsName = "KudanNode.png";
+
+        private ARImageTrackable _imageTrackable;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,17 +39,19 @@ namespace XFKudanARDemo.Droid
             trackableManager.AddTrackable(trackable);
 
             // Create an image node using an image of the kudan cow
-            var cow = new ARImageNode(_nodeAssetsName);
+            var node = new ARImageNode(_nodeAssetsName);
 
-            var textureMaterial = (ARTextureMaterial)cow.Material;
+            var textureMaterial = (ARTextureMaterial)node.Material;
             var scale = trackable.Width / textureMaterial.Texture.Width;
-            cow.ScaleByUniform(scale);
+            node.ScaleByUniform(scale);
 
             // Add the image node as a child of the trackable's world
-            trackable.World.AddChild(cow);
+            trackable.World.AddChild(node);
 
             // Add listener methods that are defined in the ARImageTrackableListener interface
             trackable.AddListener(this);
+
+            _imageTrackable = trackable;
         }
 
         private static ARImageTrackable CreateTrackable(string trackableName, string assetName)
@@ -64,5 +68,11 @@ namespace XFKudanARDemo.Droid
         public void DidDetect(ARImageTrackable p0) => System.Diagnostics.Debug.WriteLine("Did Detect");
         public void DidLose(ARImageTrackable p0) => System.Diagnostics.Debug.WriteLine("Did Lose");
         public void DidTrack(ARImageTrackable p0) => System.Diagnostics.Debug.WriteLine("Did Track");
+
+        public new void Dispose()
+        {
+            _imageTrackable?.Dispose();
+            base.Dispose();
+        }
     }
 }

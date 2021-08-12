@@ -1,24 +1,28 @@
 # XFKudanARDemo
 
-2021.8.12
+2021.8.12（夏休み1日目）
 
 ### はじめに
 
-2021年の夏休みの課題として [KudanAR](https://www.xlsoft.com/jp/products/kudan/index.html) を試してみました。
+2021年の夏休みの課題として [KudanAR](https://www.xlsoft.com/jp/products/kudan/index.html) を試しましたのでメモっときます。
 
-Unity でも動作する 自身のUnity力 でゴールできる自信がなかったので、触ったことのある Xamarin.Forms で実装しています。
+Unity でも動作するのですが、自身のUnity力 で完成まで持っていく自信がなかったので、少し触ったことのある Xamarin.Forms で実装しました。
 
-余計な変更を入れてない シンプルに動作するプロジェクトの作成方法を以下にメモります。
+本リポジトリでは、余計な変更を入れてない シンプルにライブラリを動作させています。
 
-### 完成
+### 完成ソフトデモ
 
-マーカー画像の傾きに応じて、重畳画像も変形しています。すごいですね。
+マーカー画像の傾きに応じて重畳画像 も変形しています。
+
+また、画面の一部を写すと重畳画像の一部が表示されます。すごいですね！
 
 ![demo](https://github.com/hsytkm/XFKudanARDemo/blob/trunk/demo.gif)
 
-### 1. Xamarin.Forms でプロジェクトを作成する。
+### 対応作業
 
-iOS, UWP プロジェクトも追加しときました。 Android 以外を実装するつもりはないです。
+#### 1. Xamarin.Forms プロジェクトの作成
+
+iOS, UWP プロジェクトも追加しときました。 Android 以外を実装する予定はないです。
 
 **マーカー画像**
 
@@ -26,14 +30,14 @@ iOS, UWP プロジェクトも追加しときました。 Android 以外を実�
 
 ダウンロードした画像 (2枚) は Android プロジェクトの `Assets` フォルダに登録します。 プロパティは `Android.Assets` , `コピーしない` にしておきましょう。
 
-動作確認のため貼っときます。
+動作確認のため マーカー画像 を貼っときます。
 
 ![KudanMarker](https://github.com/hsytkm/XFKudanARDemo/blob/trunk/XFKudanARDemo/XFKudanARDemo.Android/Assets/KudanMarker.jpg)
 
-### 2. Android バインド ライブラリの追加
+#### 2. Android バインド ライブラリの追加
 
 1. メアド登録により取得したダウンロードリンク (敢えてURL書いていません) から `Andoroid SDK` をダウンロードします。
-2. `Jars` フォルダに `KudanAR.aar` ファイルを追加して、ビルドアクションを LibraryProjectZip` に設定します。
+2. `Jars` フォルダに `KudanAR.aar` ファイルを追加して、ビルドアクションを `LibraryProjectZip` に設定します。 **本リポジトリでは削除しています。**
 3. Android プロジェクト から このプロジェクト を参照します。
 4. この時点でビルドするとエラーになるので、Android プロジェクトの `AndroidManifest.xml` に `tools:replace="android:label"` を追加します。
 
@@ -58,7 +62,7 @@ iOS, UWP プロジェクトも追加しときました。 Android 以外を実�
 
 [.AAR のバインド - Xamarin | Microsoft Docs](https://docs.microsoft.com/ja-jp/xamarin/android/platform/binding-java-library/binding-an-aar)
 
-### 3. 各種ソース追加
+#### 3. 各種ソースコードの追加
 
 **MarkerARActivity.cs**
 
@@ -78,14 +82,14 @@ Android プロジェクトから パーミッション をチェックするた�
 
 **MainPage(ViewModel).cs**
 
-UI周りは雰囲気で実装します。 今回の実装では必要ないのですが、ViewModel に `INotifyPropertyChanged` を実装しておきました。（Xamarin.Forms に明るくないですが、WPF ではリークの原因なるためです）
+UI周りは雰囲気で実装します。 今回の実装では必要ないのですが、ViewModel に `INotifyPropertyChanged` を実装しておきました。（Xamarin.Forms に明るくないですが、WPF ではメモリリークの原因になるためです）
 
-### 4. ライセンスキー
+#### 4. ライセンスキーの設定
 
-1. [公式](https://www.xlsoft.com/doc/kudan/ja/development-license-keys_jp/) から取得して  `MarkerARActivity.cs` 内のフィールドに設定します。
+1. [公式](https://www.xlsoft.com/doc/kudan/ja/development-license-keys_jp/) から取得して  `MarkerARActivity.cs` 内のフィールドに設定します。 **本リポジトリでは削除しています。**
 2. 開発用ライセンスを使用する場合は、`AndroidManifest.xml` の `package` を変更しましょう。 この作業の時点では `com.xlsoft.kudanar1` でした。~~DeveloperHub には  `com.xlsoft.kudanar` と書いてあったので少し詰まりました~~
 
-### 参考
+### 参考リンク
 
 [Kudan ホーム : エクセルソフト](https://www.xlsoft.com/jp/products/kudan/index.html)
 
@@ -103,4 +107,4 @@ UI周りは雰囲気で実装します。 今回の実装では必要ないの�
 | Xamarin.Essentials  | 1.7.0      |
 | Google Pixel 3      | Android 11 |
 
-
+EOF
