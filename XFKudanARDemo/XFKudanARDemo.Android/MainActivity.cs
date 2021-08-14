@@ -30,7 +30,10 @@ namespace XFKudanARDemo.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        internal void StartActivity<T>() where T : Activity => StartActivity(new Intent(this, typeof(T)));
-
+        internal void StartActivity<T>() where T : Activity
+        {
+            using var intent = new Intent(this, typeof(T));
+            StartActivity(intent);
+        }
     }
 }

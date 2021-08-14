@@ -36,7 +36,7 @@ iOS, UWP プロジェクトも追加しときました。 Android 以外を実�
 
 #### 2. Android バインド ライブラリの追加
 
-1. メアド登録により取得したダウンロードリンク (敢えてURL書いていません) から `Andoroid SDK` をダウンロードします。
+1. [公式 - AR SDK](https://www.xlsoft.com/jp/products/kudan/download.html) から `Andoroid SDK` をダウンロードします。 **※要メアド登録**
 2. `Jars` フォルダに `KudanAR.aar` ファイルを追加して、ビルドアクションを `LibraryProjectZip` に設定します。 **本リポジトリでは削除しています。**
 3. Android プロジェクト から このプロジェクト を参照します。
 4. この時点でビルドするとエラーになるので、Android プロジェクトの `AndroidManifest.xml` に `tools:replace="android:label"` を追加します。
@@ -86,8 +86,8 @@ UI周りは雰囲気で実装します。 今回の実装では必要ないの�
 
 #### 4. ライセンスキーの設定
 
-1. [公式](https://www.xlsoft.com/doc/kudan/ja/development-license-keys_jp/) から取得して  `MarkerARActivity.cs` 内のフィールドに設定します。 **本リポジトリでは削除しています。**
-2. 開発用ライセンスを使用する場合は、`AndroidManifest.xml` の `package` を変更しましょう。 この作業の時点では `com.xlsoft.kudanar1` でした。~~DeveloperHub には  `com.xlsoft.kudanar` と書いてあったので少し詰まりました~~
+1. [公式 - APIキー](https://www.xlsoft.com/jp/products/kudan/download.html) から取得して  `MarkerARActivity.cs` 内のフィールドに設定します。
+2. 開発用ライセンスを使用する場合は、`AndroidManifest.xml` の `package` を変更しましょう。 この作業の時点では `com.xlsoft.kudanar1` でした。
 
 ### 参考リンク
 
